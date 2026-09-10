@@ -1,4 +1,5 @@
 services:
+
   ollama:
     image: ollama/ollama
     container_name: ollama
@@ -20,8 +21,6 @@ services:
     container_name: lab
     ports:
       - "8888:8888"
-    volumes:
-      - ~/Documents:/home/jovyan/
     environment:
       - OLLAMA_HOST=http://ollama:11434
       - UV_LINK_MODE=copy
