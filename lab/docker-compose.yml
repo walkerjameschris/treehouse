@@ -23,8 +23,6 @@ services:
       - "8443:8443"
     environment:
       - OLLAMA_HOST=http://ollama:11434
-      - UV_PROJECT_ENVIRONMENT=".venv"
-      - UV_IGNORE_ENV=1
     depends_on:
       ollama:
         condition: service_started
