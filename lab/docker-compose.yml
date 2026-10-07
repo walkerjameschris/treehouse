@@ -23,6 +23,7 @@ services:
       - "8443:8443"
     environment:
       - OLLAMA_HOST=http://ollama:11434
+      - VIRTUAL_ENV=""
     depends_on:
       ollama:
         condition: service_started
