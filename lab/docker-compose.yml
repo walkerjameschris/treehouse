@@ -19,8 +19,6 @@ services:
   lab:
     build: .
     container_name: lab
-    ports:
-      - "8888:8888"
     environment:
       - OLLAMA_HOST=http://ollama:11434
     depends_on:
