@@ -11,8 +11,12 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libxml2-dev
 
-# Install uv (Python) and tidy packages (R)
+# Install Python tooling
 COPY --from=ghcr.io/astral-sh/uv /uv /usr/bin/
+RUN uv tool install basedpyright
+
+# Install R tooling
+# TODO: revsit with renv and consider LSP integration
 RUN apt-get install -y r-base r-base-dev
 RUN echo "options(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/noble/latest'))" >> /etc/R/Rprofile.site
 RUN R -e "install.packages(c('tidyverse', 'tidymodels', 'devtools', 'languageserver'))"
