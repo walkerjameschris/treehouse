@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python tooling
 COPY --from=ghcr.io/astral-sh/uv /uv /usr/bin/
-RUN uv tool install basedpyright
+RUN uv tool install ty
 
 # Install R tooling
 # TODO: revsit with renv and consider LSP integration
