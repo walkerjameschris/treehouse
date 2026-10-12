@@ -20,7 +20,7 @@ RUN uv tool install ty
 # TODO: revsit with renv and consider LSP integration
 RUN apt-get install -y r-base r-base-dev
 RUN echo "options(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/noble/latest'))" >> /etc/R/Rprofile.site
-RUN R -e "install.packages(c('tidyverse', 'tidymodels', 'devtools', 'languageserver'))"
+RUN R -e "install.packages(c('tidyverse', 'usethis', 'languageserver'))"
 
 # Install Fresh IDE
 RUN curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh
