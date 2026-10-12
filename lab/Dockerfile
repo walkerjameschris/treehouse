@@ -12,4 +12,4 @@ RUN curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master
 # Runtime options
 ENV PATH="/root/.local/bin:${PATH}"
 WORKDIR /workspace
-CMD ["fresh", "."]
+CMD ["sleep", "infinity"]
