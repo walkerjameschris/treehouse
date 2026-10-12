@@ -1,4 +1,5 @@
 {
+  "theme": "builtin://gruvbox",
   "editor": {
     "tab_size": 2,
     "use_spaces": true
