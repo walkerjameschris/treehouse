@@ -1,0 +1,16 @@
+{
+  "editor": {
+    "tab_size": 2,
+    "use_spaces": true
+  },
+  "languages": {
+    "r": {
+      "tab_size": 2,
+      "use_spaces": true
+    },
+    "python": {
+      "tab_size": 4,
+      "use_spaces": true
+    }
+  }
+}
