@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Install uv (Python) and renv + packages (R)
 COPY --from=ghcr.io/astral-sh/uv /uv /usr/bin/
 RUN apt-get install -y r-base r-base-dev
-RUN echo 'options(repos = c(CRAN = "https://packagemanager.posit.co/cran/__linux__/noble/latest"))' >> /etc/R/Rprofile.site
+RUN echo "options(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/noble/latest'))" >> /etc/R/Rprofile.site
 RUN R -e "install.packages(c('languageserver', 'tidyverse', 'tidymodels', 'renv'))"
 
 # Install Fresh IDE
