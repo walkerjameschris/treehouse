@@ -59,11 +59,11 @@ Host treehouse
   Hostname treehouse
   User treehouse
 
-Host token
+Host lab
   Hostname treehouse
   User treehouse
   RequestTTY yes
-  RemoteCommand sh -c "docker logs lab 2>&1 | grep -oP 'token=\K[0-9a-f]+' | tail -1"
+  RemoteCommand docker run --rm -it lab
 ```
 
 ## Maintainence
