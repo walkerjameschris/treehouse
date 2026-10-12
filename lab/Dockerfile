@@ -11,9 +11,11 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libxml2-dev
 
-# Install rig (R) and uv (Python)
-RUN curl -LsSf https://r-lib.github.io/rig/install.sh | sh
+# Install uv (Python) and renv + packages (R)
 COPY --from=ghcr.io/astral-sh/uv /uv /usr/bin/
+RUN apt-get install -y r-base r-base-dev
+RUN echo 'options(repos = c(CRAN = "https://packagemanager.posit.co/cran/__linux__/noble/latest"))' >> /etc/R/Rprofile.site
+RUN R -e "install.packages(c('languageserver', 'tidyverse', 'tidymodels', 'renv'))"
 
 # Install Fresh IDE
 RUN curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh
