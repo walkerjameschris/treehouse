@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libcurl4-openssl-dev \
     libssl-dev \
-    libxml2-dev
+    libxml2-dev \
+    libuv1-dev
 
 # Install Python tooling
 COPY --from=ghcr.io/astral-sh/uv /uv /usr/bin/
