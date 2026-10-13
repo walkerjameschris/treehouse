@@ -1,19 +1,5 @@
 {
   "@jupyterlab/apputils-extension:themes" : {
     "theme" : "JupyterLab Dark"
-  },
-  "@jupyter-lsp/jupyterlab-lsp:plugin": {
-    "language_servers": {
-      "basedpyright": {
-        "options": {
-          "basedpyright": {
-            "analysis": {
-              "autoSearchPaths": true,
-              "useLibraryCodeForTypes": true
-            }
-          }
-        }
-      }
-    }
   }
 }
