@@ -1,5 +1,5 @@
 {
-  "theme": "builtin://gruvbox",
+  "theme": "builtin://dark",
   "editor": {
     "tab_size": 2,
     "use_spaces": true
