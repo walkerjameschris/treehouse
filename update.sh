@@ -12,8 +12,8 @@ set -e
 (cd lab/ && docker compose pull && docker compose up -d)
 (cd memos/ && docker compose pull && docker compose up -d)
 
-# Cleanup unused images
-docker image prune -f
+# Cleanup unused images, cache, and volumes
+docker system prune -a -f
 
 # Update successful
 echo "Success!"
