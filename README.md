@@ -59,16 +59,22 @@ Host treehouse
   Hostname treehouse
   User treehouse
 
-Host token
+Host lab
   Hostname treehouse
   User treehouse
   RequestTTY yes
   RemoteCommand sh -c "docker logs lab 2>&1 | grep -oP 'token=\K[0-9a-f]+' | tail -1"
+
+Host rstudio
+  Hostname treehouse
+  User treehouse
+  RequestTTY yes
+  RemoteCommand sh -c "docker logs rstudio 2>&1 | grep -oP "The password is set to \K.*$" | tail -1"
 ```
 
-## Maintainence
+## Maintenance
 
-Generally, the server is low maintainence. Approximately once
+Generally, the server is low maintenance. Approximately once
 per month it is wise to run `sudo ./update.sh`. After updating
 the system and container images, connect an external drive and 
 run `sudo ./backup.sh` to create a complete backup of the RAID.
