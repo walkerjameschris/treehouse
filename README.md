@@ -64,12 +64,6 @@ Host lab
   User treehouse
   RequestTTY yes
   RemoteCommand sh -c "docker logs lab 2>&1 | grep -oP 'token=\K[0-9a-f]+' | tail -1"
-
-Host rstudio
-  Hostname treehouse
-  User treehouse
-  RequestTTY yes
-  RemoteCommand sh -c "docker logs rstudio 2>/dev/null | grep -oP 'The password is set to \K\S+'"
 ```
 
 ## Maintenance
