@@ -37,6 +37,16 @@ services:
     networks:
       - ollama-network
 
+  rstudio:
+    image: rocker/rstudio
+    container_name: rstudio
+    ports:
+      - "8787:8787"
+    depends_on:
+      ollama:
+        condition: service_started
+    restart: unless-stopped
+
 volumes:
   ollama-models: {}
 
