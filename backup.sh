@@ -42,8 +42,12 @@ rsync -av --delete --info=progress2 --exclude="lost+found" /mnt/raid/ "$BACKUP_D
 (cd lab/ && docker compose up -d)
 (cd memos/ && docker compose up -d)
 
+# Ensure all buffered disk writes are physically flushed
+echo "Syncing disk caches..."
+sync
+
 # Unmount backup drive for safe removal
-umount -l "$BACKUP_DRIVE"
+umount "$BACKUP_DRIVE"
 
 # Backup successful
 echo "Success!"
