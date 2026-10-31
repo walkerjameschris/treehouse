@@ -59,7 +59,7 @@ Host treehouse
   Hostname treehouse
   User treehouse
 
-Host lab
+Host token
   Hostname treehouse
   User treehouse
   RequestTTY yes
