@@ -6,7 +6,7 @@ This repo contains configurations and services for my home server.
 These steps define the primary requirements needed by the system
 to get up and running.
 
-- Install Ubuntu 24 LTS Desktop on the SSD
+- Install Ubuntu LTS Desktop on the SSD
 - Set the server display to stay on forever in Ubuntu settings
 - Install NVIDIA driver with:
   - Determine driver with `sudo ubuntu-drivers devices`
