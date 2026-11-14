@@ -11,8 +11,8 @@ BACKUP_DRIVE=/mnt/backup/
 # drive (as opposed to a directory on the machine)
 if ! mountpoint -q "$BACKUP_DRIVE"; then
     echo "Error: $BACKUP_DRIVE is not mounted!"
-    echo "You may need to run `lsblk` to determine mount (e.g., `/dev/sde1/`)"
-    echo "`sudo mkdir -p /mnt/backup/ && sudo mount /dev/sde1 /mnt/backup`"
+    echo "You may need to run `lsblk` to determine mount (e.g., /dev/sde1/)"
+    echo "sudo mkdir -p /mnt/backup/ && sudo mount /dev/sde1 /mnt/backup"
     exit 1
 fi
 
