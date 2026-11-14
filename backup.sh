@@ -5,7 +5,7 @@
 set -e
 
 # Set mount point for backup drive
-BACKUP_DRIVE=/media/treehouse/backup/
+BACKUP_DRIVE=/mnt/backup/
 
 # Ensure backup drive is online and is a mounted
 # drive (as opposed to a directory on the machine)
