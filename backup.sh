@@ -1,24 +1,28 @@
 #!/bin/bash
 # This ensures the backup script will *halt* if
-# any one command fails (e.g., stopping a Docker
-# image) preventing data corruption
+# any one command fails (stopping Docker) preventing data corruption
 set -e
 
-# Set mount point for backup drive
-BACKUP_DRIVE=/media/treehouse/backup/
+# Find already-mounted external drives (excluding your RAID)
+mapfile -t drives < <(findmnt -n -o TARGET | grep -E "^/(media|mnt)/" | grep -v "raid")
 
-# Ensure backup drive is online and is a mounted
-# drive (as opposed to a directory on the machine)
-if ! mountpoint -q "$BACKUP_DRIVE"; then
-    echo "Error: $BACKUP_DRIVE is not mounted!"
+# Halt if no backup drives are found
+if [ ${#drives[@]} -eq 0 ]; then
+    echo "Error: No external drives found mounted under /media or /mnt!"
     exit 1
 fi
 
-# Ensure the backup drive is formatted as ext4 (other
-# format types such as FAT32 enhance compatability with
-# other operating systems, but will not correctly inherit
-# timestamps and permissions for Linux and may cause rsync
-# to unnecessarily copy and replace files)
+# Make selection and assign to BACKUP_DRIVE variable
+echo "Available backup drives:"
+select BACKUP_DRIVE in "${drives[@]}"; do
+    [ -n "$BACKUP_DRIVE" ] && break
+    echo "Invalid selection. Please try again."
+done
+
+# Print the drive we selected
+echo "Using backup drive: $BACKUP_DRIVE"
+
+# Ensure the backup drive is formatted as ext4
 if [ "$(findmnt -n -o FSTYPE -T "$BACKUP_DRIVE")" != "ext4" ]; then
     echo "Error: $BACKUP_DRIVE is not formatted as ext4!"
     exit 1
@@ -29,12 +33,7 @@ fi
 (cd lab/ && docker compose down)
 (cd memos/ && docker compose down)
 
-# Begin backup (can take a long time) which will:
-# - Backup new files
-# - Update existing files
-# - Inherit all permissions
-# - Delete files in backup which I intentionally
-#   removed (e.g., I deleted an picture in Immich)
+# Begin backup
 rsync -av --delete --info=progress2 --exclude="lost+found" /mnt/raid/ "$BACKUP_DRIVE"
 
 # Restart Docker images
