@@ -40,7 +40,6 @@ services:
 volumes:
   ollama-models: {}
 
-
 networks:
   ollama-network:
     driver: bridge
